@@ -11,20 +11,20 @@ import fr.imie.supcommerce.dao.DaoFactory;
 
 
 @SuppressWarnings("serial")
-@WebServlet(urlPatterns="/auth/removeProduct")
-public class RemoveProductServlet extends HttpServlet{
+@WebServlet(urlPatterns="/auth/removeCategory")
+public class RemoveCategoryServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html");
-		Long id;
+		int id;
 
 		if (req.getParameter("id") != null) {
-			id = Long.parseLong(req.getParameter("id"));
+			id = Integer.parseInt(req.getParameter("id"));
 			
-			if (DaoFactory.productDao().selectProduct(id) != null) {
-				DaoFactory.productDao().removeProduct(id);
+			if (DaoFactory.categoryDao().selectCategory(id) != null) {
+				DaoFactory.categoryDao().removeCategory(id);
 				}
 			}
-		resp.sendRedirect("/SupCommerce/listProduct");
+		resp.sendRedirect("/SupCommerce/listCategory");
 	}
 }

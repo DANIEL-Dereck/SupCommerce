@@ -64,8 +64,8 @@ public class JpaCategoryDao implements CategoryDao{
 		EntityTransaction t = em.getTransaction();
 		try {
 			t.begin();
-			Query query = em.createQuery("DELETE c FROM Category AS c WHERE c = ?1");
-			query.setParameter(1,category);
+			Query query = em.createQuery("DELETE FROM Category AS c WHERE c.id = ?1");
+			query.setParameter(1,category.getId());
 			nbrDeleted = query.executeUpdate();
 			t.commit();
 		} finally {
@@ -76,6 +76,7 @@ public class JpaCategoryDao implements CategoryDao{
 		em.close();
 		return nbrDeleted;
 	}
+	
 	@Override
 	public int removeCategory(int id) {
 		int nbrDeleted = 0;
@@ -83,7 +84,7 @@ public class JpaCategoryDao implements CategoryDao{
 		EntityTransaction t = em.getTransaction();
 		try {
 			t.begin();
-			Query query = em.createQuery("DELETE c FROM Category AS c WHERE c = ?1");
+			Query query = em.createQuery("DELETE FROM Category AS c WHERE c.id = ?1");
 			query.setParameter(1,id);
 			nbrDeleted = query.executeUpdate();
 			t.commit();

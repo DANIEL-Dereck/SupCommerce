@@ -59,20 +59,38 @@ public class JpaProductDao implements ProductDao{
 
 	@Override
 	public int removeProduct(Product product) {
+		int nbrDeleted = 0;
 		EntityManager em = emf.createEntityManager();
-		Query query = em.createQuery("DELETE p FROM Product AS p Where p = ?1");
-		query.setParameter(1,product);
-		int nbrDeleted = query.executeUpdate();
-		em.close();
+        EntityTransaction t = em.getTransaction();
+        try {
+            t.begin();
+            Query query = em.createQuery("DELETE FROM Product AS product WHERE product.id = :id");
+            query.setParameter("id", product.getId());
+            nbrDeleted = query.executeUpdate();
+
+            t.commit();
+        } finally {
+            if (t.isActive()) t.rollback();
+            em.close();
+        }
 		return nbrDeleted;
 	}
+	
 	@Override
 	public int removeProduct(Long id) {
+		int nbrDeleted = 0;
 		EntityManager em = emf.createEntityManager();
-		Query query = em.createQuery("DELETE p FROM Product AS p Where p.id = ?1");
-		query.setParameter(1,id);
-		int nbrDeleted = query.executeUpdate();
-		em.close();
+        EntityTransaction t = em.getTransaction();
+        try {
+            t.begin();
+            Query query = em.createQuery("DELETE FROM Product AS product WHERE product.id = :id");
+            query.setParameter("id", id);
+            nbrDeleted = query.executeUpdate();
+            t.commit();
+        } finally {
+            if (t.isActive()) t.rollback();
+            em.close();
+        }
 		return nbrDeleted;
 	}
 

@@ -1,7 +1,6 @@
 package fr.imie.supcommerce.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Collection;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,20 +19,8 @@ public class ListProductServlet extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Collection<Product> productList = DaoFactory.productDao().selectAllProduct(); 
-		
+		req.setAttribute("productList", productList);
 		RequestDispatcher rd = req.getRequestDispatcher("/listProduct.jsp");
-		
-		resp.setContentType("text/html");			
-		PrintWriter out = resp.getWriter();
-		if (!productList.isEmpty()) {			
-			for (Product product : productList) {
-				out.println("<h2>" + product.toString() + "</h2>");
-			}
-		}
-		else{
-			resp.setContentType("text/html");
-			out.println("<h2>Liste vide</h2>");
-		}
 		rd.forward(req, resp);
 	}
 }

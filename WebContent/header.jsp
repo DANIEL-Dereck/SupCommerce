@@ -15,15 +15,7 @@
 </head>
 <body>
 	<div class="container">
-				    	<%	
-					if (session.getAttribute("username") != null) {
-						out.print("<h4 class=\"pull-right\">Bonjour " + session.getAttribute("username") + "</h4>");
-					}
-					else{
-						out.print("<h4 class=\"pull-right\">Anonymous</h4>");
-					}
-				%>  	   
-		<nav class="navbar navbar-light" style="background-color: #b7f2ff;">
+		<nav class="navbar navbar-inverse">
 		<a class="navbar-brand" href="/SupCommerce/listProduct">ListProduct</a>
 		<a class="navbar-brand" href="/SupCommerce/listCategory">ListCategory</a>
 		

@@ -27,7 +27,6 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/hk2-locator-2.3.0-b10.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/hk2-utils-2.3.0-b10.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javafaker-0.2.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javassist-3.12.0.GA.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javassist-3.18.1-GA.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.annotation-api-1.2.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.inject-2.3.0-b10.jar"/>
