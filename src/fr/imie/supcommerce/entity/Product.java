@@ -6,8 +6,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
+@XmlRootElement(name="product")
 public class Product {
 	
 	@Id
@@ -19,7 +22,6 @@ public class Product {
 	@ManyToOne
 	@JoinColumn(name="categoryfk")
 	private Category category;
-
 	
 	public Product() {
 	}
@@ -56,6 +58,7 @@ public class Product {
 	public Float getPrice() {
 		return price;
 	}
+	@XmlTransient
 	public Category getCategory() {
 		return category;
 	}

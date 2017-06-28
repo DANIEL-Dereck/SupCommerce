@@ -7,9 +7,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 
 @Entity
+@XmlRootElement(name="category")
+@XmlTransient
 public class Category {	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -33,6 +37,7 @@ public class Category {
 	public String getName() {
 		return name;
 	}
+	@XmlTransient
 	public Collection<Product> getPruduct() {
 		return pruduct;
 	}
